@@ -1,19 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//optimized solution
+//TC:O(n) SC:O(1)
 int maxProfit(vector<int>& prices) {
     int minPrice = INT_MAX;
     int maxProfit = 0;
 
     for (int price : prices) {
 
-        // Ab tak ka minimum price (buy price)
+        
         minPrice = min(minPrice, price);
 
-        // Aaj sell karne par profit
+        
         int profit = price - minPrice;
 
-        // Maximum profit update karo
+        
         maxProfit = max(maxProfit, profit);
     }
 
@@ -27,3 +28,27 @@ int main() {
 
     return 0;
 }
+//MY Leetcode approach 
+/*class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxp=0;
+        for(int i=0;i<prices.size();i++){
+            for(int j=i+1;j<prices.size();j++){
+                int profit=prices[j]-prices[i];
+                maxp=max(profit,maxp);
+            }
+        }
+        if(maxp){
+            return maxp;
+        }
+        return 0;
+    }
+    
+};*/ 
+/*Problem of my approach:
+Time coplexity:O(n^2)+time limit exceeded 
+ Not able to comprehend all  test cases 
+Learning:Greddy Approach+optimization*/
+    
+
